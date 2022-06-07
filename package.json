@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^4.2.6",
+    "@mantine/hooks": "^4.2.6",
+    "@mantine/next": "^4.2.6",
     "newt-client-js": "^3.0.2",
     "next": "12.1.5",
     "react": "18.0.0",
@@ -21,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.7",
+    "click-to-react-component": "^1.0.8",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
