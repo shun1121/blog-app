@@ -36,7 +36,6 @@ export const getStaticProps: GetStaticProps<{}, {id: string}> = async (context) 
     modelUid: 'article',
     contentId: context.params.id,
   })
-  // console.log(context.params.id);
   
   return {
     props: data,
