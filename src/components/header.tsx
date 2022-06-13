@@ -1,15 +1,9 @@
 import { createStyles, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
+import Link from 'next/link'
 import React, { useState } from 'react';
-// export const Header = () => {
-//   return (
-//     <header className="bg-white text-black text-center h-16 flex justify-center items-center">
-//       <div className="w-[1200px]">
-//         SHUN&apos;S BLOG
-//       </div>
-//     </header>
-//   )
-// }
+import { Toggle } from './toggleTheme'
+
 const HEADER_HEIGHT = 60;
 
 const useStyles = createStyles((theme) => ({
@@ -17,7 +11,6 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
     zIndex: 1,
   },
-
   dropdown: {
     position: 'absolute',
     top: HEADER_HEIGHT,
@@ -28,31 +21,26 @@ const useStyles = createStyles((theme) => ({
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
     overflow: 'hidden',
-
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
   },
-
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
   },
-
   links: {
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
   },
-
   burger: {
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
   },
-
   link: {
     display: 'block',
     lineHeight: 1,
@@ -62,17 +50,14 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
-
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     },
-
     [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,
       padding: theme.spacing.md,
     },
   },
-
   linkActive: {
     '&, &:hover': {
       backgroundColor:
@@ -92,6 +77,8 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
+  console.log(classes)
+  console.log(cx)
 
   const items = links.map((link) => (
     <a
@@ -110,27 +97,32 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <div>Shun&apos;s Blog</div>
+        <Link href="/">
+          <a>
+            Shun&apos;s Blog
+          </a>
+        </Link>
         {/* <Group spacing={5} className={classes.links}>
           {items}
         </Group> */}
-
-        <Burger
-          opened={opened}
-          onClick={() => toggleOpened()}
-          className={classes.burger}
-          size="sm"
-        />
-
-        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+        <div className='flex space-x-2'>
+          <Toggle />
+          {/* <Burger
+            opened={opened}
+            onClick={() => toggleOpened()}
+            className={classes.burger}
+            size="sm"
+          /> */}
+        </div>
+        {/* <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
             </Paper>
           )}
-        </Transition>
+        </Transition> */}
       </Container>
     </Header>
   );
