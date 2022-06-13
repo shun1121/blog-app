@@ -1,16 +1,25 @@
-import { Content, Contents } from "newt-client-js"
-import { GetStaticPaths, GetStaticProps } from "next"
+// import { Content, Contents } from "newt-client-js"
+import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import { Post } from ".."
+import { HeaderResponsive } from "../../components/header"
 import { client } from "../../libs/client"
+import { links } from "../../mock/headerLink"
 
-interface Post extends Content {
-  title: string
-  body: string
-}
+// interface Post extends Content {
+//   title: string
+//   body: string
+// }
 
-const Blog = (props: any) => {
-  // console.log(props)
+const Blog: NextPage<Post> = (props) => {
   return (
-    <p>{props.title}</p>
+    <div>
+      <HeaderResponsive links={links} />
+      <div className="max-w-[1200px] mx-auto">
+        {/* <div>{props.title}</div> */}
+        <div dangerouslySetInnerHTML={{ __html: props.body }}/>
+        {/* <p>{props.body}</p> */}
+      </div>
+    </div>
   )
 }
 
@@ -30,13 +39,11 @@ export const getStaticProps: GetStaticProps<{}, {id: string}> = async (context) 
   if (!context.params) {
     return { notFound: true }
   }
-  
   const data = await client.getContent<Post>({
     appUid: 'blog',
     modelUid: 'article',
     contentId: context.params.id,
   })
-  
   return {
     props: data,
   };
