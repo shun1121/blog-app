@@ -1,6 +1,12 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer base {
+  h2 {
+   @apply my-5 font-semibold text-3xl sm:text-4xl;
+ }
+}
 html,
 body {
   padding: 0;
