@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps<{}, {id: string}> = async (context) 
   const $ = cheerio.load(data.body,{ decodeEntities: false })
   $('h2, h3').each((index, elm) => {
     $(elm).html();
+    $(elm).addClass("headings")
     $(elm).attr('id', `${index}`)
   });
   const toc = generateTableOfContent(data.body)
