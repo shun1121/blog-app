@@ -2,6 +2,7 @@
 import * as cheerio from 'cheerio';
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { Post } from ".."
+import { Footer } from '../../components/footer';
 import { HeaderResponsive } from "../../components/header"
 import { client } from "../../libs/client"
 import { links } from "../../mock/headerLink"
@@ -14,7 +15,7 @@ import styles from '../../styles/detailPage.module.css'
 
 const Blog: NextPage<Post> = (props) => {
   return (
-    <div className="mb-32">
+    <div>
       <HeaderResponsive links={links} />
       <div className="max-w-[1200px] mx-auto flex space-x-10">
         <section className="w-[calc(100%_-_330px)]">
@@ -29,6 +30,7 @@ const Blog: NextPage<Post> = (props) => {
           }}/>
         </aside>
       </div>
+      <Footer />
     </div>
   )
 }
