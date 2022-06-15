@@ -26,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.7",
+    "cheerio": "^1.0.0-rc.11",
     "click-to-react-component": "^1.0.8",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",

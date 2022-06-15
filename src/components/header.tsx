@@ -77,8 +77,6 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
-  console.log(classes)
-  console.log(cx)
 
   const items = links.map((link) => (
     <a
@@ -100,7 +98,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
         <Link href="/">
-          <a>
+          <a className='font-bold'>
             Shun&apos;s Blog
           </a>
         </Link>

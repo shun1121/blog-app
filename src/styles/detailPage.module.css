@@ -1,0 +1,11 @@
+.h2 {
+    font-size: 30px;
+  }
+  
+  @media (max-width: 600px) {
+    .grid {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+  
