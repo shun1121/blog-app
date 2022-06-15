@@ -14,6 +14,8 @@ export interface Post extends Content {
     src: string
     _id: string
   }
+  content: string
+  toc: string
 }
 const Home: NextPage<Contents<Post>> = (props) => {
   console.log(props)
