@@ -1,6 +1,7 @@
 import { Grid, Card, Image, Text } from '@mantine/core';
 import { Content, Contents } from 'newt-client-js';
 import type { GetStaticProps, NextPage } from 'next'
+import { Footer } from '../components/footer'
 import { HeaderResponsive } from '../components/header'
 import { client } from '../libs/client'
 import { links } from '../mock/headerLink'
@@ -47,6 +48,7 @@ const Home: NextPage<Contents<Post>> = (props) => {
           ))}
         </Grid>
       </div>
+      <Footer />
     </div>
   )
 }
