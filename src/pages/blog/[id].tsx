@@ -1,5 +1,6 @@
 // import { Content, Contents } from "newt-client-js"
 import * as cheerio from 'cheerio';
+import dayjs from 'dayjs'
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { Post } from ".."
 import { Footer } from '../../components/footer';
@@ -17,8 +18,10 @@ const Blog: NextPage<Post> = (props) => {
   return (
     <div>
       <HeaderResponsive links={links} />
-      <div className="max-w-[1200px] mx-auto flex space-x-10">
+      <div className="max-w-[1000px] mx-auto flex space-x-10">
         <section className="w-[calc(100%_-_330px)]">
+          <p>{props.data.title}</p>
+          <p>{dayjs(props.data._sys.updatedAt).format("YYYY年MM月DD日")}</p>
           <div dangerouslySetInnerHTML={{
             __html: props.content,
           }}/>
