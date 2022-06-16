@@ -6,7 +6,7 @@ module.exports = {
       ...theme('colors'),
       default: theme('colors.gray.300', 'currentColor'),
       'primary': '#34354a',
-      // 'secondary': '#ffed4a',
+      'secondary': '#e9ecef',
       // 'danger': '#e3342f',
     }),
     extend: {},

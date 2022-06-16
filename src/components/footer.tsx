@@ -1,14 +1,23 @@
+import { createStyles } from '@mantine/core';
 import Link from 'next/link'
 import React from 'react';
 import { RiGithubLine, RiTwitterLine } from "react-icons/ri"
 
+const useStyles = createStyles((theme) => ({
+  border: {
+    marginTop: 120,
+    paddingTop: 40,
+    paddingBottom: 30,
+    borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]}`,
+  },
+}))
 
 export const Footer = () => {
+  const { classes } = useStyles();
   const date = new Date
   const year = date.getFullYear()
-  console.log(year)
   return (
-    <div className='w-full mt-32 mb-10 pt-10 border-t border-primary'>
+    <div className={classes.border}>
       <div className='text-center'>
         <div className='mb-6'>
           <Link href="/">
@@ -18,12 +27,12 @@ export const Footer = () => {
           </Link>
         </div>
         <div className='flex justify-center mb-6 space-x-4'>
-          <Link href="">
+          <Link href="https://github.com/shun1121">
             <a target="_blank" rel="noopener">
               <RiGithubLine className='h-6 w-6' />
             </a>
           </Link>
-          <Link href="">
+          <Link href="https://twitter.com/Shunsuk87072477">
             <a target="_blank" rel="noopener">
               <RiTwitterLine className='h-6 w-6' />
             </a>
