@@ -1,10 +1,10 @@
-import { createStyles, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
+import { createStyles, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core'
+import { useBooleanToggle } from '@mantine/hooks'
 import Link from 'next/link'
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { Toggle } from './toggleTheme'
 
-const HEADER_HEIGHT = 80;
+const HEADER_HEIGHT = 80
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -68,16 +68,16 @@ const useStyles = createStyles((theme) => ({
       color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7],
     },
   },
-}));
+}))
 
 interface HeaderResponsiveProps {
-  links: { link: string; label: string }[];
+  links: { link: string; label: string }[]
 }
 
 export function HeaderResponsive({ links }: HeaderResponsiveProps) {
-  const [opened, toggleOpened] = useBooleanToggle(false);
-  const [active, setActive] = useState(links[0].link);
-  const { classes, cx } = useStyles();
+  const [opened, toggleOpened] = useBooleanToggle(false)
+  const [active, setActive] = useState(links[0].link)
+  const { classes, cx } = useStyles()
 
   const items = links.map((link) => (
     <a
@@ -86,22 +86,20 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
       // className={classes.link}
       onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-        toggleOpened(false);
+        event.preventDefault()
+        setActive(link.link)
+        toggleOpened(false)
       }}
     >
       {link.label}
     </a>
-  ));
+  ))
 
   return (
     <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <Link href="/">
-          <a className='font-bold text-xl'>
-            Shun&apos;s Blog
-          </a>
+        <Link href='/'>
+          <a className='font-bold text-xl'>Shun&apos;s Blog</a>
         </Link>
         {/* <Group spacing={5} className={classes.links}>
           {items}
@@ -124,5 +122,5 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         </Transition> */}
       </Container>
     </Header>
-  );
+  )
 }
