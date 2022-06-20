@@ -4,12 +4,13 @@ import Link from 'next/link'
 import React, { useState } from 'react';
 import { Toggle } from './toggleTheme'
 
-const HEADER_HEIGHT = 60;
+const HEADER_HEIGHT = 80;
 
 const useStyles = createStyles((theme) => ({
   root: {
     position: 'relative',
     zIndex: 1,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
   },
   dropdown: {
     position: 'absolute',
@@ -98,7 +99,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
         <Link href="/">
-          <a className='font-bold'>
+          <a className='font-bold text-xl'>
             Shun&apos;s Blog
           </a>
         </Link>
