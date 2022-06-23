@@ -5,12 +5,17 @@ import dayjs from 'dayjs'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
-import { Post } from '..'
+import { Item } from '..'
 import { Footer } from '../../components/footer'
 import { HeaderResponsive } from '../../components/header'
 import { Profile } from '../../components/profile'
 import { client } from '../../libs/client'
 import { links } from '../../mock/headerLink'
+
+type Data = {
+  data: Item
+  content: string
+}
 
 const useStyles = createStyles((theme) => ({
   border: {
@@ -49,7 +54,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const Blog: NextPage<Post> = (props) => {
+const Blog: NextPage<Data> = (props) => {
   const { classes } = useStyles()
   useEffect(() => {
     tocbot.init({
@@ -57,7 +62,6 @@ const Blog: NextPage<Post> = (props) => {
       contentSelector: 'body',
       headingSelector: 'h2, h3',
     })
-
     return () => tocbot.destroy()
   })
   return (
@@ -102,11 +106,10 @@ const Blog: NextPage<Post> = (props) => {
 }
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const data = await client.getContents<Post>({
+  const data = await client.getContents<Item>({
     appUid: 'blog',
     modelUid: 'article',
   })
-  // 記事のidを配列で返す。
   const ids = data.items.map((item) => `/blog/${item._id}`)
   return {
     paths: ids,
@@ -117,7 +120,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async (context
   if (!context.params) {
     return { notFound: true }
   }
-  const data = await client.getContent<Post>({
+  const data = await client.getContent<Item>({
     appUid: 'blog',
     modelUid: 'article',
     contentId: context.params.id,
