@@ -1,4 +1,4 @@
-import { createStyles, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core'
+import { createStyles, Header, Container } from '@mantine/core'
 import { useBooleanToggle } from '@mantine/hooks'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -84,7 +84,6 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       key={link.label}
       href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-      // className={classes.link}
       onClick={(event) => {
         event.preventDefault()
         setActive(link.link)
@@ -96,30 +95,14 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   ))
 
   return (
-    <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
+    <Header height={HEADER_HEIGHT} mb={80} className={classes.root}>
       <Container className={classes.header}>
         <Link href='/'>
-          <a className='font-bold text-xl'>Shun&apos;s Blog</a>
+          <a className='font-bold text-xl'>Shunsuke&apos;s Blog</a>
         </Link>
-        {/* <Group spacing={5} className={classes.links}>
-          {items}
-        </Group> */}
         <div className='flex space-x-2'>
           <Toggle />
-          {/* <Burger
-            opened={opened}
-            onClick={() => toggleOpened()}
-            className={classes.burger}
-            size="sm"
-          /> */}
         </div>
-        {/* <Transition transition="pop-top-right" duration={200} mounted={opened}>
-          {(styles) => (
-            <Paper className={classes.dropdown} withBorder style={styles}>
-              {items}
-            </Paper>
-          )}
-        </Transition> */}
       </Container>
     </Header>
   )
