@@ -3,7 +3,6 @@ import { Sun, MoonStars } from 'tabler-icons-react'
 
 export const Toggle = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
-  console.log(colorScheme)
   const dark = colorScheme === 'dark'
 
   return (

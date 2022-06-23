@@ -4,7 +4,7 @@ import { Sns } from './sns'
 
 const useStyles = createStyles((theme) => ({
   border: {
-    marginTop: 160,
+    marginTop: 80,
     paddingTop: 50,
     paddingBottom: 40,
     borderTop: `1px solid ${
@@ -22,11 +22,6 @@ export const Footer = () => {
     <div className={classes.border}>
       <div className='text-center'>
         <div className='mb-5'>
-          {/* <Link href="/">
-            <a>
-              Privacy Policy
-            </a>
-          </Link> */}
         </div>
         <div className='flex justify-center mb-6'>
           <Sns />
