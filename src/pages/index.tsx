@@ -84,7 +84,9 @@ const Home: NextPage<Contents<Item>> = (props) => {
           <div className={classes.buttonWrapper}>
             <div className={classes.button}>
               <Link href='/blog/page/1'>
-                <a className='flex w-full h-full justify-center items-center font-bold'>記事一覧へ</a>
+                <a className='flex w-full h-full justify-center items-center font-bold'>
+                  記事一覧へ
+                </a>
               </Link>
             </div>
           </div>
