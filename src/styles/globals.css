@@ -53,3 +53,8 @@ h3.headings {
   font-weight: bold;
   opacity: 1;
 }
+
+.mantine-qqmv3w img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}

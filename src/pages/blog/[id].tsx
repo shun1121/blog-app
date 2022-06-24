@@ -80,7 +80,6 @@ const Blog: NextPage<Data> = (props) => {
                   __html: props.content,
                 }}
               />
-              <div>{props.content}</div>
             </div>
             <div>
               <Profile
