@@ -68,8 +68,11 @@ const useStyles = createStyles((theme) => ({
   button: {
     width: '120px',
     height: '44px',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     borderRadius: '5px',
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
+    },
   }
 }))
 const Home: NextPage<Contents<Item>> = (props) => {
