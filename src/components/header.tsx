@@ -1,5 +1,6 @@
 import { createStyles, Header, Container } from '@mantine/core'
 import { useBooleanToggle } from '@mantine/hooks'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { Toggle } from './toggleTheme'
@@ -98,7 +99,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={80} className={classes.root}>
       <Container className={classes.header}>
         <Link href='/'>
-          <a className='font-bold text-xl'>Shunsuke&apos;s Blog</a>
+          <a className='font-bold text-xl'>
+            <Image src='/images/logo.png' alt='' width={140} height={40} />
+          </a>
         </Link>
         <div className='flex space-x-2'>
           <Toggle />

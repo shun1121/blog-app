@@ -1,4 +1,4 @@
-import { Grid, Image, Text, Container, createStyles } from '@mantine/core'
+import { Grid, Image, Text, Container, createStyles, Card } from '@mantine/core'
 import dayjs from 'dayjs'
 import type { NextPage } from 'next'
 import Link from 'next/link'
@@ -11,6 +11,9 @@ type BlogList = {
 const useStyles = createStyles((theme) => ({
   postsWrapper: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
+    },
     width: '100%',
     height: '260px',
     maxHeight: '260px',
@@ -32,12 +35,11 @@ export const BlogList: NextPage<BlogList> = ({ blogs }) => {
     <Container>
       <Grid gutter={40}>
         {blogs.map((item) => (
-          <Grid.Col key={item._id} sm={6} className='rounded'>
+          <Grid.Col key={item._id} sm={6}>
             <Link href={`/blog/${item._id}`} passHref>
               <div className={classes.postsWrapper}>
                 <a>
                   <Image src={item.coverImage?.src} height={160} alt='cover_image' />
-
                   <Text weight={500} size='lg' className='px-3 mt-2 line-clamp-2'>
                     {item.title}
                   </Text>
