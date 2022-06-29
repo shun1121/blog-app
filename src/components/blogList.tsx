@@ -15,8 +15,8 @@ const useStyles = createStyles((theme) => ({
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
     },
     width: '100%',
-    height: '260px',
-    maxHeight: '260px',
+    height: '280px',
+    maxHeight: '280px',
     borderRadius: '15px',
     position: 'relative',
     cursor: 'pointer',
@@ -40,7 +40,7 @@ export const BlogList: NextPage<BlogList> = ({ blogs }) => {
               <div className={classes.postsWrapper}>
                 <a>
                   <Image src={item.coverImage?.src} height={160} alt='cover_image' />
-                  <Text weight={500} size='lg' className='px-3 mt-2 line-clamp-2'>
+                  <Text weight={700} size='xl' className='px-3 mt-2 line-clamp-2'>
                     {item.title}
                   </Text>
                   <Text weight={400} size='sm' className='absolute bottom-2 pl-4'>

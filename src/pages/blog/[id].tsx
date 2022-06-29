@@ -1,7 +1,7 @@
-// import { Content, Contents } from "newt-client-js"
 import { createStyles } from '@mantine/core'
 import * as cheerio from 'cheerio'
 import dayjs from 'dayjs'
+import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
@@ -11,10 +11,11 @@ import { HeaderResponsive } from '../../components/header'
 import { Profile } from '../../components/profile'
 import { client } from '../../libs/client'
 import { links } from '../../mock/headerLink'
+import 'highlight.js/styles/hybrid.css';
 
 type Data = {
   data: Item
-  content: string
+  highlightedBody: string
 }
 
 const useStyles = createStyles((theme) => ({
@@ -42,12 +43,18 @@ const useStyles = createStyles((theme) => ({
     margin: '0 auto',
   },
   section: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    border: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
+    }`,
     padding: 40,
     borderRadius: '10px',
   },
   side: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    border: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
+    }`,
     padding: 20,
     borderRadius: '10px',
     width: '273.688px',
@@ -77,7 +84,7 @@ const Blog: NextPage<Data> = (props) => {
               </p>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: props.content,
+                  __html: props.highlightedBody,
                 }}
               />
             </div>
@@ -130,10 +137,15 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async (context
     $(elm).addClass('headings')
     $(elm).attr('id', `${index}`)
   })
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass('hljs');
+  });
   return {
     props: {
       data: data,
-      content: $.html(),
+      highlightedBody:$.html()
     },
   }
 }
