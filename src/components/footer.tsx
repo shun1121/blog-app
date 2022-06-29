@@ -26,7 +26,7 @@ export const Footer = () => {
         <div className='flex justify-center mb-6'>
           <Sns />
         </div>
-        <p className='mb-6'>@{year} Shun&apos;s Blog All rights reserved</p>
+        <p className='mb-6'>@{year} Shun&apos;s Blog</p>
       </div>
     </div>
   )
