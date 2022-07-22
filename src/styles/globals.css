@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* @layer base {
   h2.headings {
@@ -11,8 +11,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -24,6 +24,12 @@ a {
   box-sizing: border-box;
 }
 
+p {
+  word-wrap: break-word;
+  margin: 15px 0px;
+  font-size: 1.2rem;
+}
+
 h2.headings {
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
@@ -31,7 +37,7 @@ h2.headings {
   font-size: 1.6rem;
   line-height: 2.25rem;
   border-bottom: solid 1px;
-  border-bottom-style: dotted
+  border-bottom-style: dotted;
 }
 
 h3.headings {
@@ -47,10 +53,16 @@ h3.headings {
 
 .toc a {
   opacity: 0.6;
+  font-size: 1.1rem;
+}
+
+.toc-list-item {
+  padding: 2px 0px;
 }
 
 .toc a.is-active-link {
   font-weight: bold;
+  font-size: 1.2rem;
   opacity: 1;
 }
 

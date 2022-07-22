@@ -11,7 +11,7 @@ import { HeaderResponsive } from '../../components/header'
 import { Profile } from '../../components/profile'
 import { client } from '../../libs/client'
 import { links } from '../../mock/headerLink'
-import 'highlight.js/styles/hybrid.css';
+import 'highlight.js/styles/hybrid.css'
 
 type Data = {
   data: Item
@@ -44,17 +44,13 @@ const useStyles = createStyles((theme) => ({
   },
   section: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
-    }`,
+    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
     padding: 40,
     borderRadius: '10px',
   },
   side: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
-    }`,
+    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
     padding: 20,
     borderRadius: '10px',
     width: '273.688px',
@@ -70,7 +66,7 @@ const Blog: NextPage<Data> = (props) => {
       headingSelector: 'h2, h3',
     })
     return () => tocbot.destroy()
-  })
+  },[])
   return (
     <div className={classes.container}>
       <HeaderResponsive links={links} />
@@ -122,7 +118,7 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
     fallback: false,
   }
 }
-export const getStaticProps: GetStaticProps<{}, { id: string }> = async (context) => {
+export const getStaticProps: GetStaticProps<Record<string, unknown>, { id: string }> = async (context) => {
   if (!context.params) {
     return { notFound: true }
   }
@@ -137,15 +133,19 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async (context
     $(elm).addClass('headings')
     $(elm).attr('id', `${index}`)
   })
+  $('a').each((_, elm) => {
+    $(elm).html()
+    $(elm).addClass('anchor')
+  })
   $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
-    $(elm).html(result.value);
-    $(elm).addClass('hljs');
-  });
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
   return {
     props: {
       data: data,
-      highlightedBody:$.html()
+      highlightedBody: $.html(),
     },
   }
 }

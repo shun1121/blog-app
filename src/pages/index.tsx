@@ -73,7 +73,7 @@ const useStyles = createStyles((theme) => ({
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
     },
-  }
+  },
 }))
 const Home: NextPage<Contents<Item>> = (props) => {
   const { classes } = useStyles()
