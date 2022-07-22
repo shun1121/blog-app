@@ -1,4 +1,4 @@
-import { Grid, Image, Text, Container, createStyles, Card } from '@mantine/core'
+import { Grid, Image, Text, Container, createStyles } from '@mantine/core'
 import dayjs from 'dayjs'
 import type { NextPage } from 'next'
 import Link from 'next/link'

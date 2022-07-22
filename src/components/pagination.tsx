@@ -21,8 +21,8 @@ const useStyles = createStyles((theme) => ({
     },
   },
   hideButton: {
-    visibility: 'hidden'
-  }
+    visibility: 'hidden',
+  },
 }))
 
 export const Pagination = ({ currentPageNum, maxPageNum }: Pagenation) => {
@@ -31,7 +31,7 @@ export const Pagination = ({ currentPageNum, maxPageNum }: Pagenation) => {
   const nextPage = currentPageNum + 1
 
   return (
-    <div className='mt-10'>
+    <div className='mt-10 mb-10'>
       <div className='mx-auto flex items-center justify-between max-w-[930px]'>
         <div className={currentPageNum !== 1 ? classes.button : classes.hideButton}>
           <Link href={`/blog/page/${prevPage}`}>

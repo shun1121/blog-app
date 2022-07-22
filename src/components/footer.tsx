@@ -21,8 +21,7 @@ export const Footer = () => {
   return (
     <div className={classes.border}>
       <div className='text-center'>
-        <div className='mb-5'>
-        </div>
+        <div className='mb-5'></div>
         <div className='flex justify-center mb-6'>
           <Sns />
         </div>

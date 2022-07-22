@@ -4,15 +4,11 @@ import { Sns } from './sns'
 
 const useStyles = createStyles((theme) => ({
   icon: {
-    border: `2px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
-    }`,
+    border: `2px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
   },
   container: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[7] : null
-    }`,
+    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
     padding: 40,
     borderRadius: '10px',
   },

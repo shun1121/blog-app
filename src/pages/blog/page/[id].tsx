@@ -3,7 +3,7 @@ import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } 
 import { BlogList } from '../../../components/blogList'
 import { Footer } from '../../../components/footer'
 import { HeaderResponsive } from '../../../components/header'
-import { Pagination } from '../../../components/pagination';
+import { Pagination } from '../../../components/pagination'
 import { client } from '../../../libs/client'
 import { links } from '../../../mock/headerLink'
 import styles from '../../../styles/Home.module.css'
@@ -71,14 +71,14 @@ const useStyles = createStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-  }
+  },
 }))
 
-const PaginationId: NextPage<Props> = ({items, currentPageNumber, total}) => {
+const PaginationId: NextPage<Props> = ({ items, currentPageNumber, total }) => {
   const { classes } = useStyles()
 
   return (
-    <div className={items.length <= 2 ? classes.width2: classes.width}>
+    <div className={items.length <= 2 ? classes.width2 : classes.width}>
       <div className={styles.container}>
         <HeaderResponsive links={links} />
         <div className={classes.wrapper}>
@@ -89,7 +89,7 @@ const PaginationId: NextPage<Props> = ({items, currentPageNumber, total}) => {
           <div className={classes.footer}>
             <Footer />
           </div>
-        ): (
+        ) : (
           <Footer />
         )}
       </div>
@@ -102,31 +102,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
     appUid: 'blog',
     modelUid: 'article',
   })
-  const range = (start: number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i);
-  const { total } = data;
-  const paths = range(1, Math.ceil(total / 4)).map((i) => `/blog/page/${i}`);
+  const range = (start: number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i)
+  const { total } = data
+  const paths = range(1, Math.ceil(total / 4)).map((i) => `/blog/page/${i}`)
   return {
     paths,
-    fallback: false
-  };
-};
+    fallback: false,
+  }
+}
 
 export const getStaticProps: GetStaticProps = async (ctx: GetStaticPropsContext) => {
   if (!ctx.params) {
     return { notFound: true }
   }
-  const pageId = Number(ctx.params.id);
+  const pageId = Number(ctx.params.id)
+  console.log(pageId)
   const data = await client.getContents<Item>({
     appUid: 'blog',
     modelUid: 'article',
   })
   const postsPerPage = data.items.slice(pageId * 6 - 6, pageId * 6)
   return {
-    props : {
+    props: {
       items: postsPerPage,
       total: data.total,
       currentPageNumber: pageId,
-    }
+    },
   }
 }
 
