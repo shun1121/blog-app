@@ -15,11 +15,6 @@ body {
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -31,7 +26,7 @@ p {
 }
 
 h2.headings {
-  margin-top: 2.25rem;
+  margin-top: 4.25rem;
   margin-bottom: 2.25rem;
   font-weight: 600;
   font-size: 1.6rem;
@@ -69,4 +64,13 @@ h3.headings {
 .mantine-qqmv3w img {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+}
+
+.anchor {
+  color: #0D83FD;
+  text-decoration: underline;
+}
+
+.anchor:hover {
+  color: #3ea8ff;
 }
