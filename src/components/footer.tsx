@@ -4,7 +4,6 @@ import { Sns } from './sns'
 
 const useStyles = createStyles((theme) => ({
   border: {
-    marginTop: 80,
     paddingTop: 50,
     paddingBottom: 40,
     borderTop: `1px solid ${
