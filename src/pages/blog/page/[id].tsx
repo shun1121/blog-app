@@ -53,7 +53,7 @@ const useStyles = createStyles((theme) => ({
   },
   wrapper: {
     maxWidth: '1200px',
-    margin: '0 auto',
+    margin: '80px auto',
     marginTop: '4rem',
   },
   width: {
