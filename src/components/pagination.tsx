@@ -1,10 +1,6 @@
 import { createStyles } from '@mantine/core'
 import Link from 'next/link'
-
-type Pagenation = {
-  currentPageNum: number
-  maxPageNum: number
-}
+import { Pagenation } from '../types/pagination'
 
 const useStyles = createStyles((theme) => ({
   buttonWrapper: {

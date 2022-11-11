@@ -2,7 +2,7 @@ import { Grid, Image, Text, Container, createStyles } from '@mantine/core'
 import dayjs from 'dayjs'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { Item } from '../pages'
+import { Item } from '../types/blogTop'
 
 type BlogList = {
   blogs: Item[]

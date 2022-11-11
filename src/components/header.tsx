@@ -3,6 +3,7 @@ import { useBooleanToggle } from '@mantine/hooks'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { HeaderResponsiveProps } from '../types/header'
 import { Toggle } from './toggleTheme'
 
 const HEADER_HEIGHT = 80
@@ -70,10 +71,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }))
-
-interface HeaderResponsiveProps {
-  links: { link: string; label: string }[]
-}
 
 export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, toggleOpened] = useBooleanToggle(false)

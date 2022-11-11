@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core'
-import { Content, Contents } from 'newt-client-js'
+import { Contents } from 'newt-client-js'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import { BlogList } from '../components/blogList'
@@ -8,41 +8,7 @@ import { HeaderResponsive } from '../components/header'
 import { client } from '../libs/client'
 import { links } from '../mock/headerLink'
 import styles from '../styles/Home.module.css'
-
-export interface Props extends Content {
-  items: Item[]
-}
-
-export type Item = {
-  author: string | null
-  body: string
-  categories: Category[]
-  coverImage: {
-    _id: string
-    fileName: string
-    fileSize: number
-    fileType: string
-    height: number
-    src: string
-    width: number
-  }
-  slug: string
-  title: string
-  _id: string
-  _sys: Sys
-}
-
-type Sys = {
-  createdAt: string
-  updatedAt: string
-}
-
-type Category = {
-  name: string
-  slug: string
-  _id: string
-  _sys: Sys
-}
+import { Item } from '../types/blogTop'
 
 const useStyles = createStyles((theme) => ({
   container: {
