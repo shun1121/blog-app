@@ -5,18 +5,14 @@ import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
-import { Item } from '..'
 import { Footer } from '../../components/footer'
 import { HeaderResponsive } from '../../components/header'
 import { Profile } from '../../components/profile'
 import { client } from '../../libs/client'
 import { links } from '../../mock/headerLink'
 import 'highlight.js/styles/hybrid.css'
-
-type Data = {
-  data: Item
-  highlightedBody: string
-}
+import { Item } from '../../types/blogTop'
+import { Data } from '../../types/blogDetail'
 
 const useStyles = createStyles((theme) => ({
   border: {

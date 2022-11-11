@@ -7,43 +7,8 @@ import { Pagination } from '../../../components/pagination'
 import { client } from '../../../libs/client'
 import { links } from '../../../mock/headerLink'
 import styles from '../../../styles/Home.module.css'
-
-export type Item = {
-  author: string | null
-  body: string
-  categories: Category[]
-  coverImage: {
-    _id: string
-    fileName: string
-    fileSize: number
-    fileType: string
-    height: number
-    src: string
-    width: number
-  }
-  slug: string
-  title: string
-  _id: string
-  _sys: Sys
-}
-
-type Props = {
-  items: Item[]
-  currentPageNumber: number
-  total: number
-}
-
-type Sys = {
-  createdAt: string
-  updatedAt: string
-}
-
-type Category = {
-  name: string
-  slug: string
-  _id: string
-  _sys: Sys
-}
+import { Item } from '../../../types/blogTop'
+import { PaginationDetailProps } from '../../../types/paginationDetail'
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -74,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const PaginationId: NextPage<Props> = ({ items, currentPageNumber, total }) => {
+const PaginationId: NextPage<PaginationDetailProps> = ({ items, currentPageNumber, total }) => {
   const { classes } = useStyles()
 
   return (

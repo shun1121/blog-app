@@ -1,5 +1,6 @@
 import { createStyles, Avatar, Text, Group } from '@mantine/core'
 import React from 'react'
+import { UserInfoIconsProps } from '../types/profile'
 import { Sns } from './sns'
 
 const useStyles = createStyles((theme) => ({
@@ -16,12 +17,6 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
   },
 }))
-
-interface UserInfoIconsProps {
-  avatar: string
-  name: string
-  title: string
-}
 
 export const Profile = ({ avatar, name, title }: UserInfoIconsProps) => {
   const { classes } = useStyles()
