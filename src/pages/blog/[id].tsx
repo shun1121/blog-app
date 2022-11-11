@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   side: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
-    padding: 20,
+    padding: "20px 0px 20px 25px",
     borderRadius: '10px',
     width: '273.688px',
   },
@@ -93,9 +93,9 @@ const Blog: NextPage<Data> = (props) => {
             </div>
           </section>
           <aside className='hidden sm:hidden md:hidden lg:block xl:block'>
-            <div className='sticky top-12'>
+            <div className='sticky top-8'>
               <div className={classes.side}>
-                <p className='text-lg pb-3 font-bold'>目次</p>
+                <div className='text-lg font-bold pb-3'>目次</div>
                 <nav className='toc' />
               </div>
             </div>

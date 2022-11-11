@@ -48,17 +48,29 @@ h3.headings {
 
 .toc a {
   opacity: 0.6;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .toc-list-item {
-  padding: 2px 0px;
+  position: relative;
+  padding: 5px 15px 3px 15px;
+  font-size: 0.7rem;
+  line-height: 1.5em;
+}
+
+.toc-list-item::before {
+  position: absolute;
+  content: "●";
+  left: -5px;
 }
 
 .toc a.is-active-link {
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: 600;
   opacity: 1;
+}
+
+ol.toc-list.is-collapsible {
+  padding-top: 5px;
 }
 
 .mantine-qqmv3w img {
