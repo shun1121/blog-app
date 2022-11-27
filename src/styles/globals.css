@@ -69,6 +69,14 @@ h3.headings {
   opacity: 1;
 }
 
+ol {
+  list-style: decimal;
+}
+
+ol.toc-list{
+  list-style: none;
+}
+
 ol.toc-list.is-collapsible {
   padding-top: 5px;
 }
