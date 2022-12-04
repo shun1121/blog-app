@@ -9,7 +9,6 @@ import { Footer } from '../../components/footer'
 import { HeaderResponsive } from '../../components/header'
 import { Profile } from '../../components/profile'
 import { client } from '../../libs/client'
-import { links } from '../../mock/headerLink'
 import 'highlight.js/styles/hybrid.css'
 import { Item } from '../../types/blogTop'
 import { Data } from '../../types/blogDetail'
@@ -65,7 +64,7 @@ const Blog: NextPage<Data> = (props) => {
   },[])
   return (
     <div className={classes.container}>
-      <HeaderResponsive links={links} />
+      <HeaderResponsive />
       <div className={classes.background}>
         <div className='flex space-x-6 justify-center pt-8'>
           <section className={classes.sectionWrapper}>
