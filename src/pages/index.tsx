@@ -47,7 +47,7 @@ const Home: NextPage<Contents<Item>> = (props) => {
   return (
     <div className={classes.width}>
       <div className={styles.container}>
-        <HeaderResponsive links={links} />
+        <HeaderResponsive />
         <div className={classes.wrapper}>
           <BlogList blogs={props.items} />
           <div className={classes.buttonWrapper}>
