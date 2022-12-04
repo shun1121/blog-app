@@ -1,24 +1,18 @@
-import { createStyles } from '@mantine/core'
-import React from 'react'
+import { useMantineColorScheme } from '@mantine/core'
+import React, { FC } from 'react'
 import { Sns } from './sns'
+import clsx from 'clsx'
 
-const useStyles = createStyles((theme) => ({
-  border: {
-    paddingTop: 50,
-    paddingBottom: 40,
-    borderTop: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[3]
-    }`,
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-  },
-}))
-
-export const Footer = () => {
-  const { classes } = useStyles()
+export const Footer: FC = () => {
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
   const date = new Date()
   const year = date.getFullYear()
+  
   return (
-    <div className={classes.border}>
+    <div className={clsx("pt-[50px] pb-40px border-[1px] border-dark-7 bg-dark-7", {
+      "bg-gray-0 border-[1px] border-gray-3" : light
+    })}>
       <div className='text-center'>
         <div className='mb-5'></div>
         <div className='flex justify-center mb-6'>

@@ -6,7 +6,6 @@ import { BlogList } from '../components/blogList'
 import { Footer } from '../components/footer'
 import { HeaderResponsive } from '../components/header'
 import { client } from '../libs/client'
-import { links } from '../mock/headerLink'
 import styles from '../styles/Home.module.css'
 import { Item } from '../types/blogTop'
 
@@ -47,7 +46,7 @@ const Home: NextPage<Contents<Item>> = (props) => {
   return (
     <div className={classes.width}>
       <div className={styles.container}>
-        <HeaderResponsive links={links} />
+        <HeaderResponsive />
         <div className={classes.wrapper}>
           <BlogList blogs={props.items} />
           <div className={classes.buttonWrapper}>
