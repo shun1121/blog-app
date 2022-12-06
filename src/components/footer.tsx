@@ -10,7 +10,7 @@ export const Footer: FC = () => {
   const year = date.getFullYear()
   
   return (
-    <div className={clsx("pt-[50px] pb-40px border-[1px] border-dark-7 bg-dark-7", {
+    <div className={clsx("pt-[20px] pb-40px border-[1px] border-dark-7 bg-dark-7", {
       "bg-gray-0 border-[1px] border-gray-3" : light
     })}>
       <div className='text-center'>
