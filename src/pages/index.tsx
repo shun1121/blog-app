@@ -26,9 +26,8 @@ const useStyles = createStyles((theme) => ({
   },
   buttonWrapper: {
     marginTop: '50px',
-    marginRight: '135px',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   button: {
     width: '120px',
