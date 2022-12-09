@@ -1,4 +1,5 @@
-import { Grid, Image, Text, Container, createStyles } from '@mantine/core'
+import { Grid, Image, Text, Container, useMantineColorScheme } from '@mantine/core'
+import clsx from 'clsx'
 import dayjs from 'dayjs'
 import type { NextPage } from 'next'
 import Link from 'next/link'
@@ -8,36 +9,18 @@ type BlogList = {
   blogs: Item[]
 }
 
-const useStyles = createStyles((theme) => ({
-  postsWrapper: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
-    },
-    width: '100%',
-    height: '280px',
-    maxHeight: '280px',
-    borderRadius: '15px',
-    position: 'relative',
-    cursor: 'pointer',
-  },
-  button: {
-    width: '120px',
-    height: '44px',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    borderRadius: '5px',
-  },
-}))
-
 export const BlogList: NextPage<BlogList> = ({ blogs }) => {
-  const { classes } = useStyles()
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
   return (
     <Container>
       <Grid gutter={40}>
         {blogs.map((item) => (
           <Grid.Col key={item._id} sm={6}>
             <Link href={`/blog/${item._id}`} passHref>
-              <div className={classes.postsWrapper}>
+              <div className={clsx("relative w-full h-[280px] max-h-[280px] rounded-[15px] bg-dark-6 cursor-pointer hover:bg-dark-4", {
+                "bg-gray-10 hover:bg-gray-3": light
+              })}>
                 <a>
                   <Image src={item.coverImage?.src} height={160} alt='cover_image' />
                   <Text weight={700} size='xl' className='px-3 mt-2 line-clamp-2'>
