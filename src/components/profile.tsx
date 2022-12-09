@@ -1,34 +1,23 @@
-import { createStyles, Avatar, Text, Group } from '@mantine/core'
+import { Avatar, Text, Group, useMantineColorScheme } from '@mantine/core'
 import React from 'react'
 import { UserInfoIconsProps } from '../types/profile'
 import { Sns } from './sns'
-
-const useStyles = createStyles((theme) => ({
-  icon: {
-    border: `2px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
-  },
-  container: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
-    padding: 40,
-    borderRadius: '10px',
-  },
-  name: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
-}))
+import clsx from 'clsx'
 
 export const Profile = ({ avatar, name, title }: UserInfoIconsProps) => {
-  const { classes } = useStyles()
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
   return (
     <div className='mt-10'>
-      <Group noWrap className={classes.container}>
-        <Avatar src={avatar} size={94} radius='md' className={classes.icon} />
+      <Group noWrap className={clsx("bg-dark-6 border border-dark-7 p-[40px] rounded-[10px]", {
+        "bg-gray-10 border-gray-10": light
+      })}>
+        <Avatar src={avatar} size={94} radius='md' />
         <div className='ml-3'>
           <Text size='xs' sx={{ textTransform: 'uppercase' }} weight={700} color='dimmed'>
             {title}
           </Text>
-          <Text size='lg' weight={500} className={classes.name}>
+          <Text size='lg' weight={500}>
             {name}
           </Text>
           <Sns />
