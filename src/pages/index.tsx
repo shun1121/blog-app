@@ -1,4 +1,5 @@
-import { createStyles } from '@mantine/core'
+import { useMantineColorScheme } from '@mantine/core'
+import clsx from 'clsx'
 import { Contents } from 'newt-client-js'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
@@ -6,51 +7,23 @@ import { BlogList } from '../components/blogList'
 import { Footer } from '../components/footer'
 import { HeaderResponsive } from '../components/header'
 import { client } from '../libs/client'
-import styles from '../styles/Home.module.css'
 import { Item } from '../types/blogTop'
 
-const useStyles = createStyles((theme) => ({
-  container: {
-    padding: '0 2rem',
-    maxWidth: '100%',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-  },
-  wrapper: {
-    maxWidth: '1200px',
-    margin: '80px auto',
-    marginTop: '4rem',
-  },
-  width: {
-    width: '100%',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-  },
-  buttonWrapper: {
-    marginTop: '50px',
-    marginRight: '135px',
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    width: '120px',
-    height: '44px',
-    borderRadius: '5px',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
-    },
-  },
-}))
 const Home: NextPage<Contents<Item>> = (props) => {
-  const { classes } = useStyles()
-
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
   return (
-    <div className={classes.width}>
-      <div className={styles.container}>
+    <div className={clsx("w-full bg-dark-5", {
+      "bg-gray-2" : light
+    })}>
+      <div>
         <HeaderResponsive />
-        <div className={classes.wrapper}>
+        <div className="max-w-[1200px] my-[80px] mx-auto">
           <BlogList blogs={props.items} />
-          <div className={classes.buttonWrapper}>
-            <div className={classes.button}>
+          <div className="mt-[50px] mr-[135px] flex justify-end">
+            <div className={clsx("w-[120px] h-[44px] bg-dark-6 rounded-[5px] hover:bg-dark-4", {
+              "bg-gray-10 hover:bg-gray-3" : light
+            })}>
               <Link href='/blog/page/1'>
                 <a className='flex w-full h-full justify-center items-center font-bold'>
                   記事一覧へ
