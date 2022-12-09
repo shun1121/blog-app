@@ -11,7 +11,7 @@ export const Footer: FC = () => {
   
   return (
     <div className={clsx("pt-[20px] pb-40px border-[1px] border-dark-7 bg-dark-7", {
-      "bg-gray-0 border-[1px] border-gray-3" : light
+      "bg-gray-10 border-[1px] border-gray-3" : light
     })}>
       <div className='text-center'>
         <div className='mb-5'></div>
