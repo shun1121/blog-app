@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core'
+import { createStyles, useMantineColorScheme } from '@mantine/core'
 import * as cheerio from 'cheerio'
 import dayjs from 'dayjs'
 import hljs from 'highlight.js'
@@ -12,6 +12,8 @@ import { client } from '../../libs/client'
 import 'highlight.js/styles/hybrid.css'
 import { Item } from '../../types/blogTop'
 import { Data } from '../../types/blogDetail'
+import { useColorScheme } from '@mantine/hooks'
+import clsx from 'clsx'
 
 const useStyles = createStyles((theme) => ({
   border: {
@@ -54,6 +56,9 @@ const useStyles = createStyles((theme) => ({
 
 const Blog: NextPage<Data> = (props) => {
   const { classes } = useStyles()
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
+  
   useEffect(() => {
     tocbot.init({
       tocSelector: '.toc',
@@ -89,7 +94,9 @@ const Blog: NextPage<Data> = (props) => {
           </section>
           <aside className='hidden sm:hidden md:hidden lg:block xl:block'>
             <div className='sticky top-8'>
-              <div className={classes.side}>
+              <div className={clsx("py-[20px] pl-[25px] w-[273.688px] rounded-[10px] bg-dark-6 border-[1px] border-dark-7", {
+                "bg-gray-10 border-none": light
+              })}>
                 <div className='text-lg font-bold pb-3'>目次</div>
                 <nav className='toc' />
               </div>
