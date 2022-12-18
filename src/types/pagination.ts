@@ -1,5 +1,5 @@
 // src/components/pagination.tsx
-export type Pagenation = {
+export type Pagination = {
   currentPageNum: number
   maxPageNum: number
 }

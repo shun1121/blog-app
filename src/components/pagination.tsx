@@ -1,9 +1,9 @@
 import { useMantineColorScheme } from '@mantine/core'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { Pagenation } from '../types/pagination'
+import { Pagination } from '../types/pagination'
 
-export const Pagination = ({ currentPageNum, maxPageNum }: Pagenation) => {
+export const PaginationComponent = ({ currentPageNum, maxPageNum }: Pagination) => {
   const { colorScheme } = useMantineColorScheme()
   const light = colorScheme === "light"
   const prevPage = currentPageNum - 1

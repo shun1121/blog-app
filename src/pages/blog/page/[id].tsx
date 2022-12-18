@@ -4,7 +4,7 @@ import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } 
 import { BlogList } from '../../../components/blogList'
 import { Footer } from '../../../components/footer'
 import { HeaderResponsive } from '../../../components/header'
-import { Pagination } from '../../../components/pagination'
+import { PaginationComponent } from '../../../components/pagination'
 import { client } from '../../../libs/client'
 import { Item } from '../../../types/blogTop'
 import { PaginationDetailProps } from '../../../types/paginationDetail'
@@ -19,7 +19,7 @@ const PaginationId: NextPage<PaginationDetailProps> = ({ items, currentPageNumbe
         <HeaderResponsive />
         <div className={clsx("my-[80px] mx-auto max-w-[1200px]")}>
           <BlogList blogs={items} />
-          <Pagination currentPageNum={currentPageNumber} maxPageNum={Math.ceil(total / 6)} />
+          <PaginationComponent currentPageNum={currentPageNumber} maxPageNum={Math.ceil(total / 6)} />
         </div>
         {items.length <= 2 ? (
           <div className={clsx("absolute bottom-0 w-full")}>
