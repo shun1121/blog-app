@@ -33,7 +33,7 @@ const Blog: NextPage<Data> = (props) => {
       "bg-gray-2": light
     })}>
       <HeaderResponsive />
-      <div className={clsx("mx-w-[1200px] my-[80px] mx-auto")}>
+      <div className={clsx("max-w-[1200px] my-[80px] mx-auto")}>
         <div className='flex space-x-6 justify-center pt-8'>
           <section className={clsx("w-[calc(100%-330px)]", {
             "w-[90%] my-0 mx-auto" : matches,

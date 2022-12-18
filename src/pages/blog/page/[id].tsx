@@ -1,56 +1,28 @@
-import { createStyles } from '@mantine/core'
+import { useMantineColorScheme } from '@mantine/core'
+import clsx from 'clsx'
 import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
 import { BlogList } from '../../../components/blogList'
 import { Footer } from '../../../components/footer'
 import { HeaderResponsive } from '../../../components/header'
 import { Pagination } from '../../../components/pagination'
 import { client } from '../../../libs/client'
-import styles from '../../../styles/Home.module.css'
 import { Item } from '../../../types/blogTop'
 import { PaginationDetailProps } from '../../../types/paginationDetail'
 
-const useStyles = createStyles((theme) => ({
-  container: {
-    padding: '0 2rem',
-    maxWidth: '100%',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-  },
-  wrapper: {
-    maxWidth: '1200px',
-    margin: '80px auto',
-    marginTop: '4rem',
-  },
-  width: {
-    width: '100%',
-    position: 'relative',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-  },
-  width2: {
-    minHeight: '100vh',
-    width: '100%',
-    position: 'relative',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-  },
-  footer: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-  },
-}))
-
 const PaginationId: NextPage<PaginationDetailProps> = ({ items, currentPageNumber, total }) => {
-  const { classes } = useStyles()
+  const { colorScheme } = useMantineColorScheme()
+  const light = colorScheme === "light"
 
   return (
-    <div className={items.length <= 2 ? classes.width2 : classes.width}>
-      <div className={styles.container}>
+    <div className={items.length <= 2 ? clsx("h-screen w-full relative bg-dark-5", {"bg-gray-2": light }) : clsx("bg-dark-5", {"bg-gray-2": light })}>
+      <div>
         <HeaderResponsive />
-        <div className={classes.wrapper}>
+        <div className={clsx("my-[80px] mx-auto max-w-[1200px]")}>
           <BlogList blogs={items} />
           <Pagination currentPageNum={currentPageNumber} maxPageNum={Math.ceil(total / 6)} />
         </div>
         {items.length <= 2 ? (
-          <div className={classes.footer}>
+          <div className={clsx("absolute bottom-0 w-full")}>
             <Footer />
           </div>
         ) : (
