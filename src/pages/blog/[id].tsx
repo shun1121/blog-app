@@ -1,4 +1,4 @@
-import { createStyles, useMantineColorScheme } from '@mantine/core'
+import { useMantineColorScheme } from '@mantine/core'
 import * as cheerio from 'cheerio'
 import dayjs from 'dayjs'
 import hljs from 'highlight.js'
@@ -12,50 +12,11 @@ import { client } from '../../libs/client'
 import 'highlight.js/styles/hybrid.css'
 import { Item } from '../../types/blogTop'
 import { Data } from '../../types/blogDetail'
-import { useColorScheme } from '@mantine/hooks'
 import clsx from 'clsx'
-
-const useStyles = createStyles((theme) => ({
-  border: {
-    marginTop: 120,
-    paddingTop: 40,
-    paddingBottom: 30,
-    borderTop: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
-    }`,
-  },
-  sectionWrapper: {
-    [theme.fn.smallerThan(1024)]: {
-      width: '90%',
-      margin: '0 auto',
-    },
-    width: 'calc(100% - 330px)',
-  },
-  container: {
-    width: '100%',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-  },
-  background: {
-    maxWidth: '1200px',
-    margin: '80px auto',
-  },
-  section: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
-    padding: 40,
-    borderRadius: '10px',
-  },
-  side: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : null}`,
-    padding: "20px 0px 20px 25px",
-    borderRadius: '10px',
-    width: '273.688px',
-  },
-}))
+import { useMediaQuery } from '@mantine/hooks';
 
 const Blog: NextPage<Data> = (props) => {
-  const { classes } = useStyles()
+  const matches = useMediaQuery("(max-width: 1024px)")
   const { colorScheme } = useMantineColorScheme()
   const light = colorScheme === "light"
   
@@ -68,12 +29,18 @@ const Blog: NextPage<Data> = (props) => {
     return () => tocbot.destroy()
   },[])
   return (
-    <div className={classes.container}>
+    <div className={clsx("w-full bg-dark-5", {
+      "bg-gray-2": light
+    })}>
       <HeaderResponsive />
-      <div className={classes.background}>
+      <div className={clsx("mx-w-[1200px] my-[80px] mx-auto")}>
         <div className='flex space-x-6 justify-center pt-8'>
-          <section className={classes.sectionWrapper}>
-            <div className={classes.section}>
+          <section className={clsx("w-[calc(100%-330px)]", {
+            "w-[90%] my-0 mx-auto" : matches,
+          })}>
+            <div className={clsx("p-[40px] rounded-[10px] bg-dark-6 border-[1px] border-dark-7", {
+              "bg-gray-10 border-none": light
+            })}>
               <h1 className='font-bold'>{props.data.title}</h1>
               <p className='text-[14px] mt-2 mb-6'>
                 {dayjs(props.data._sys.updatedAt).format('YYYY年MM月DD日')}
